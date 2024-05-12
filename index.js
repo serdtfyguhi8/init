@@ -1,7 +1,17 @@
-const fibonacci = (n) => {
-  const sequence = [0, 1];
-  for (let i = 2; i <= n; i++) {
-    sequence.push(sequence[i - 1] + sequence[i - 2]);
+function combinationSum(candidates, target) {
+  const result = [];
+  backtrack([], 0, 0);
+  return result;
+  function backtrack(combination, start, sum) {
+    if (sum === target) {
+      result.push([...combination]);
+      return;
+    }
+    if (sum > target) return;
+    for (let i = start; i < candidates.length; i++) {
+      combination.push(candidates[i]);
+      backtrack(combination, i, sum + candidates[i]);
+      combination.pop();
+    }
   }
-  return sequence;
-};
+}
