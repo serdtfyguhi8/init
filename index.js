@@ -1,17 +1,8 @@
-function combinationSum(candidates, target) {
-  const result = [];
-  backtrack([], 0, 0);
-  return result;
-  function backtrack(combination, start, sum) {
-    if (sum === target) {
-      result.push([...combination]);
-      return;
-    }
-    if (sum > target) return;
-    for (let i = start; i < candidates.length; i++) {
-      combination.push(candidates[i]);
-      backtrack(combination, i, sum + candidates[i]);
-      combination.pop();
-    }
-  }
+function sortedArrayToBST(nums) {
+  if (!nums.length) return null;
+  const mid = Math.floor(nums.length / 2);
+  const root = new TreeNode(nums[mid]);
+  root.left = sortedArrayToBST(nums.slice(0, mid));
+  root.right = sortedArrayToBST(nums.slice(mid + 1));
+  return root;
 }
